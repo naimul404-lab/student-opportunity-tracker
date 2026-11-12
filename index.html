@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7ff" />
+    <meta name="description" content="A simple, private way for students to organize scholarships, internships, courses, jobs, and other opportunities." />
+    <title>Opportunity Tracker — Student Tools</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Opportunity Tracker home">
+          <span class="brand-mark" aria-hidden="true">OT</span>
+          <span><span class="brand-kicker">Student tools</span><strong>Opportunity Tracker</strong></span>
+        </a>
+        <a class="header-link" href="#opportunity-form">Add opportunity <span aria-hidden="true">＋</span></a>
+      </div>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Make room for your next step</p>
+          <h1 id="page-title">Keep good opportunities<br /><span>within reach.</span></h1>
+          <p class="intro">One calm place to track scholarships, internships, courses, jobs, and the deadlines that come with them.</p>
+          <a class="button button-primary hero-button" href="#opportunity-form">Add your first opportunity <span aria-hidden="true">→</span></a>
+          <p class="privacy-note"><span aria-hidden="true">🔒</span> Your list stays in this browser on this device. No account needed.</p>
+        </div>
+        <aside class="hero-note" aria-label="A helpful reminder">
+          <span class="note-icon" aria-hidden="true">✦</span>
+          <p class="note-label">A gentle reminder</p>
+          <p class="note-text">You don’t have to do everything at once. Choose one next step that works for you.</p>
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="Opportunity overview">
+        <article class="stat-card"><span class="stat-label">Tracked</span><strong id="stat-total">0</strong><span class="stat-detail">opportunities</span></article>
+        <article class="stat-card"><span class="stat-label">Coming up</span><strong id="stat-upcoming">0</strong><span class="stat-detail">deadlines in 7 days</span></article>
+        <article class="stat-card"><span class="stat-label">In progress</span><strong id="stat-progress">0</strong><span class="stat-detail">applied or waiting</span></article>
+      </section>
+
+      <section id="opportunity-form" class="panel form-panel" aria-labelledby="form-heading">
+        <div class="section-heading">
+          <div><p class="eyebrow">Start with one</p><h2 id="form-heading">Add an opportunity</h2></div>
+          <p>Fields marked <span aria-hidden="true">*</span> are required.</p>
+        </div>
+        <form id="add-form">
+          <div class="form-grid">
+            <label class="field field-wide" for="title"><span>Opportunity name <span aria-hidden="true">*</span></span><input id="title" name="title" maxlength="120" required placeholder="e.g. Community science scholarship" /></label>
+            <label class="field" for="category"><span>Category</span><select id="category" name="category"><option>Scholarship</option><option>Internship</option><option>Course</option><option>Event</option><option>Job</option><option>Volunteer</option><option>Other</option></select></label>
+            <label class="field" for="deadline"><span>Deadline <span aria-hidden="true">*</span></span><input id="deadline" name="deadline" type="date" required /></label>
+            <label class="field" for="priority"><span>Priority</span><select id="priority" name="priority"><option>Medium</option><option>High</option><option>Low</option></select></label>
+            <label class="field" for="status"><span>Status</span><select id="status" name="status"><option>Interested</option><option>Applied</option><option>Waiting</option><option>Accepted</option><option>Not selected</option></select></label>
+            <label class="field field-wide" for="url"><span>Official link <span class="optional">(optional)</span></span><input id="url" name="url" type="url" maxlength="500" placeholder="https://example.org/opportunity" /></label>
+            <label class="field field-wide" for="notes"><span>Notes <span class="optional">(optional)</span></span><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="Eligibility, documents to prepare, or your next step"></textarea></label>
+          </div>
+          <div class="form-footer"><p id="form-message" class="form-message" role="status" aria-live="polite"></p><button class="button button-primary" type="submit">Save opportunity <span aria-hidden="true">＋</span></button></div>
+        </form>
+      </section>
+
+      <section class="opportunities-section" aria-labelledby="opportunities-heading">
+        <div class="section-heading list-heading">
+          <div><p class="eyebrow">Your personal list</p><h2 id="opportunities-heading">Opportunities</h2></div>
+          <button id="export-button" class="button button-secondary" type="button">Download backup <span aria-hidden="true">↓</span></button>
+        </div>
+        <div class="filters panel" role="search">
+          <label class="field search-field" for="search"><span>Search your list</span><input id="search" type="search" placeholder="Search names, notes, or categories" /></label>
+          <label class="field" for="category-filter"><span>Category</span><select id="category-filter"><option value="all">All categories</option><option>Scholarship</option><option>Internship</option><option>Course</option><option>Event</option><option>Job</option><option>Volunteer</option><option>Other</option></select></label>
+          <label class="field" for="status-filter"><span>Status</span><select id="status-filter"><option value="all">All statuses</option><option>Interested</option><option>Applied</option><option>Waiting</option><option>Accepted</option><option>Not selected</option></select></label>
+          <label class="field" for="sort-order"><span>Sort by</span><select id="sort-order"><option value="deadline">Soonest deadline</option><option value="priority">Priority</option><option value="newest">Recently added</option></select></label>
+        </div>
+        <p id="list-summary" class="list-summary" aria-live="polite"></p>
+        <div id="opportunity-list" class="opportunity-list"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-inner"><span>Opportunity Tracker</span><span>Private by design. Take it one step at a time.</span></div></footer>
+  </body>
+</html>
